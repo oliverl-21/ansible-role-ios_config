@@ -3,7 +3,16 @@
 
 ios_config_enabled: no
 
-ios_config_fact_subsets: 
+ios_config_fact_subsets:
   - "!config"
 ios_config_fact_network_resources:
   - "l2_interfaces"
+
+radius_servers:
+- server: 10.18.48.10
+  key:
+  name: ISE01
+- server: 10.18.48.11
+  key: 
+  name: ISE02
+mgmt-vlan: 30

@@ -1,0 +1,51 @@
+!
+ip http server
+ip http secure-server
+ip http secure-active-session-modules none
+ip http active-session-modules none
+!
+aaa new-model
+aaa authentication dot1x default group radius
+aaa authorization network default group radius
+aaa authorization auth-proxy default group radius
+aaa accounting dot1x default start-stop group radius
+aaa session-id common
+aaa accounting update newinfo periodic 2880
+aaa accounting system default start-stop group radius
+!
+aaa server radius dynamic-author
+{% for server in radius_servers % }
+client {{ server['server'] }} server-key {{ server['key'] }}
+{% endfor %}
+radius-server attribute 6 on-for-login-auth
+radius-server attribute 8 include-in-access-req
+radius-server attribute 25 access-request include
+radius-server deadtime 15
+radius-server dead-criteria time 30 tries 3
+radius-server vsa send accounting
+radius-server vsa send authentication
+ip radius source-interface vlan {{ mgmt-vlan }}
+ip device tracking
+!
+ip dhcp snooping
+ip dhcp snooping vlan 1-4094
+no ip dhcp snooping information option
+!
+dot1x system-auth-control
+dot1x critical eapol
+authentication critical recovery delay 1000
+epm logging
+epm access-control open
+access-session acl default passthrough
+!
+no authentication logging verbose
+no mab logging verbose
+no dot1x logging verbose
+!
+{% for server in radius_servers % }
+radius server {{ server['name'] }}
+address ipv4 {{ server['server'] }} auth-port 1812 acct-port 1813
+key {{ server['key'] }}
+retransmit 2
+timeout 3
+{% endfor %}

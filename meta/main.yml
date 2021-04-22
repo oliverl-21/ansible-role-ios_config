@@ -10,9 +10,9 @@ galaxy_info:
   min_ansible_version: 2.10
 
   platforms:
-   - name: ios
-     version:
-     - any
+    - name: ios
+      version:
+        - any
 
   galaxy_tags:
   - networking
