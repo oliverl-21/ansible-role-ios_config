@@ -21,6 +21,8 @@ A list of other roles hosted on Galaxy should go here, plus any details in regar
 Example Playbook
 ----------------
 
+TODO
+
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
     - hosts: servers
@@ -30,9 +32,9 @@ Including an example of how to use your role (for instance, with variables passe
 License
 -------
 
-BSD
+GPL-3.0-or-later
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+OLA, Cancom
