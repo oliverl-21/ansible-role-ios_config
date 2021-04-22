@@ -1,0 +1,9 @@
+---
+# defaults file for ios-config
+
+ios_config_enabled: no
+
+ios_config_fact_subsets: 
+  - "!config"
+ios_config_fact_network_resources:
+  - "l2_interfaces"

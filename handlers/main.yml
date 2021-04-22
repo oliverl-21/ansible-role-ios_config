@@ -1,0 +1,6 @@
+---
+# handlers file for ios-config
+
+- name: SaveConfig
+  ios_config:
+    save_when: modified

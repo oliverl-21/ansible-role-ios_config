@@ -1,0 +1,9 @@
+    - name: Update IOS-XE
+      debug:
+        msg: "{{ansible_net_version}}"
+      when: ansible_net_iostype == "IOS-XE"
+
+    - name: Update IOS
+      debug:
+        msg: "{{ansible_net_version}}"
+      when: ansible_net_iostype == "IOS"
