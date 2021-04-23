@@ -1,0 +1,18 @@
+---
+# task file for Interface Config
+- name: Interface config
+  ios_interfaces:
+    config:
+    - name: '{{ item.key }}'
+      description: 'Uplink to {{ ansible_net_neighbors[item.key][0]["host"]|default("Uplink") }}'
+    state: merged
+    # debug:
+    # msg: '{{ item.key }} {{ item.value.description }}'
+  loop: '{{ ansible_net_interfaces|dict2items }}'
+  loop_control:
+    label: '{{ item.key }}'
+  when: ios_config_enabled
+    and item.value.description|lower is search("uplink")
+    and (item.value.type is search("Ethernet") or item.value.type is match("EtherChannel"))
+  notify:
+    - SaveConfig

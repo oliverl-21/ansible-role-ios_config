@@ -4,21 +4,15 @@
   ios_facts:
     gather_subset: '{{ ios_config_fact_subsets }}'
     gather_network_resources: '{{ ios_config_fact_network_resources | default(omit) }}'
-  when: ios_config_enabled
 
-- name: Interface config
-  ios_interfaces:
-    config:
-    - name: '{{ item.key }}'
-      description: 'Uplink to {{ ansible_net_neighbors[item.key][0]["host"]|default("Uplink") }}'
-    state: merged
-    # debug:
-    # msg: '{{ item.key }} {{ item.value.description }}'
-  loop: '{{ ansible_net_interfaces|dict2items }}'
-  loop_control:
-    label: '{{ item.key }}'
-  when: ios_config_enabled
-    and item.value.description|lower is search("uplink")
-    and (item.value.type is search("Ethernet") or item.value.type is match("EtherChannel"))
-  notify:
-    - SaveConfig
+- name: Interface Config
+  import_tasks: interface.yml
+  when: ios_int_config_enabled
+
+- name: Device Sensor Config
+  import_tasks: 1x-dev-sensor.yml
+  when: ios_sensor_config_enabled
+
+- name: 1x Global Config
+  import_tasks: 1x-global.yml
+  when: ios_1xglobal_config_enabled

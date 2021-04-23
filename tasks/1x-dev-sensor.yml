@@ -1,9 +1,11 @@
 ---
 # Generate IOS Device Sensor config
 - name: Generate Device Sensor config
-  template: src=1x-dev-sensor.j2 dest=../files/{{ inventory_hostname }}.cfg
+  template: src=1x-dev-sensor.j2 dest=roles/ios_config/files/sensor_{{ inventory_hostname }}.cfg
 
 - name: Push config
   ios_config:
-    src: ../files/{{ inventory_hostname }}.cfg
-    force: yes
+    src: roles/ios_config/files/sensor_{{ inventory_hostname }}.cfg
+    match: none
+  notify:
+    - SaveConfig

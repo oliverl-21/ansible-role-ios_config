@@ -1,0 +1,27 @@
+!
+device-sensor filter-list dhcp list sensor.dhcp
+option name host-name
+option name default-ip-ttl
+option name requested-address
+option name parameter-request-list
+option name class-identifier
+option name client-identifier
+device-sensor filter-spec dhcp include list sensor.dhcp
+!
+device-sensor filter-list lldp list sensor.lldp
+tlv name system-name
+tlv name system-description
+tlv name system-capabilities
+device-sensor filter-spec lldp include list sensor.lldp
+!
+device-sensor filter-list cdp list sensor.cdp
+tlv name device-name
+tlv name address-type
+tlv name capabilities-type
+tlv name platform-type
+device-sensor filter-spec cdp include list sensor.cdp
+!
+device-sensor accounting
+device-sensor notify all-changes
+no macro auto monitor
+!

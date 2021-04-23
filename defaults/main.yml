@@ -1,7 +1,9 @@
 ---
 # defaults file for ios-config
 
-ios_config_enabled: no
+ios_int_config_enabled: false
+ios_sensor_config_enabled: false
+ios_1xglobal_config_enabled: false
 
 ios_config_fact_subsets:
   - "!config"

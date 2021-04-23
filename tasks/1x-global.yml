@@ -1,0 +1,11 @@
+---
+# Generate IOS Device Sensor config
+- name: Generate Device Sensor config
+  template: src=1x-global.j2 dest=roles/{{ role_name }}/files/1xglobal_{{ inventory_hostname }}.cfg
+
+- name: Push config
+  ios_config:
+    src: roles/{{ role_name }}/files/1xglobal_{{ inventory_hostname }}.cfg
+    match: none
+  notify:
+    - SaveConfig
