@@ -14,7 +14,7 @@ aaa accounting update newinfo periodic 2880
 aaa accounting system default start-stop group radius
 !
 aaa server radius dynamic-author
-{% for server in radius_servers % }
+{% for server in radius_servers %}
 client {{ server['server'] }} server-key {{ server['key'] }}
 {% endfor %}
 radius-server attribute 6 on-for-login-auth
@@ -24,7 +24,7 @@ radius-server deadtime 15
 radius-server dead-criteria time 30 tries 3
 radius-server vsa send accounting
 radius-server vsa send authentication
-ip radius source-interface vlan {{ mgmt-vlan }}
+ip radius source-interface vlan {{ mgmt_vlan }}
 ip device tracking
 !
 ip dhcp snooping
@@ -42,7 +42,7 @@ no authentication logging verbose
 no mab logging verbose
 no dot1x logging verbose
 !
-{% for server in radius_servers % }
+{% for server in radius_servers %}
 radius server {{ server['name'] }}
 address ipv4 {{ server['server'] }} auth-port 1812 acct-port 1813
 key {{ server['key'] }}

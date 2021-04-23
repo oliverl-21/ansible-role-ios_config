@@ -7,5 +7,6 @@
   ios_config:
     src: roles/{{ role_name }}/files/1xglobal_{{ inventory_hostname }}.cfg
     match: none
+  when: push_config
   notify:
     - SaveConfig
