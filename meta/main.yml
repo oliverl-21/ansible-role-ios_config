@@ -2,6 +2,8 @@ galaxy_info:
   author: Oliver Laue
   description: Cisco IOS test role
   company: none
+  role_name: ios_config
+  namespace: cancom
 
   # issue_tracker_url: http://example.com/issue/tracker
 

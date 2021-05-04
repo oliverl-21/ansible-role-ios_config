@@ -1,16 +1,17 @@
 ---
 # defaults file for ios-config
-
+#
 push_config: false
 ios_int_config_enabled: false
 ios_sensor_config_enabled: false
 ios_1xglobal_config_enabled: false
 
 ios_config_fact_subsets:
-- "!config"
+  - "!config"
 ios_config_fact_network_resources:
-- "l2_interfaces"
+  - "l2_interfaces"
 
+# Radius Server Definition
 radius_servers:
 -  server: 10.18.48.10
    key: test123
@@ -18,4 +19,7 @@ radius_servers:
 -  server: 10.18.48.11
    key: test123
    name: ISE02
+
+# Radius Source Interface
 mgmt_vlan: 30
+

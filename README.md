@@ -1,32 +1,61 @@
-Role Name
+ios_config
 =========
 
-A brief description of the role goes here.
+Cisco IOS Config Role
+
+Current Tasks:
+ - Radius Server Definition
+ - ISE/802.1x Global Settings
+ - Device Sensor Configuration
+
+ToDo:
+- 802.1x Interface Config
+- DHCP Snooping Trusted Interface
+- maybe ISE config (ND, NDG)
+  - Integrate with: [maxrainer.cisco_ise](https://galaxy.ansible.com/maxrainer/cisco_ise)
+- and more
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Radius Server Definition: IP Address, Hostname, Radius-Key
+Radius Source Interface
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+
+- push_config
+  - defines if config should be pushed to the Device or config diff should be stored locally 
+- ios_int_config_enabled
+  - enables interface configuration
+- ios_sensor_config_enabled
+  - enables IOS Device Sensor Configuration
+- ios_1xglobal_config_enabled
+  - enables IOS ISE/802.1x Global Config
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Roles: none
+
+Collection:
+- cisco.ios
+- ansible.netcommon
 
 Example Playbook
 ----------------
 
 TODO
+```yaml
+- name: example
+  hosts: csw02
+  gather_facts: false
+  connection: network_cli
+  roles:
+    - { role: ios_config, ios_config_enabled: false, ios_sensor_config_enabled: true, ios_1xglobal_config_enabled: true }
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```
 
 License
 -------
