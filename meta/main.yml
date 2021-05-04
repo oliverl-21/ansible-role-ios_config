@@ -1,11 +1,9 @@
 galaxy_info:
-  author: Oliver Laue
-  description: Cisco IOS test role
+  author: oliverl-21
+  description: Cisco IOS role
   company: none
   role_name: ios_config
-  namespace: cancom
-
-  # issue_tracker_url: http://example.com/issue/tracker
+  issue_tracker_url: https://github.com/oliverl-21/ansible-role-ios_config/issues
 
   license: GPL-3.0-or-later
 
@@ -17,11 +15,10 @@ galaxy_info:
         - any
 
   galaxy_tags:
-  - networking
-  - cisco
-  - ios
-  - iosxe
-
+    - networking
+    - cisco
+    - ios
+    - iosxe
 
 dependencies:
-
+# TODO

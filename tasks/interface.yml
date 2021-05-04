@@ -15,4 +15,4 @@
     and item.value.description|lower is search("uplink")
     and (item.value.type is search("Ethernet") or item.value.type is match("EtherChannel"))
   notify:
-    - SaveConfig
+  - SaveConfig

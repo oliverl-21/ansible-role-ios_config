@@ -13,13 +13,12 @@ ios_config_fact_network_resources:
 
 # Radius Server Definition
 radius_servers:
--  server: 10.18.48.10
-   key: test123
-   name: ISE01
--  server: 10.18.48.11
-   key: test123
-   name: ISE02
+  -  server: 10.18.48.10
+     key: test123
+     name: ISE01
+  -  server: 10.18.48.11
+     key: test123
+     name: ISE02
 
 # Radius Source Interface
 mgmt_vlan: 30
-
