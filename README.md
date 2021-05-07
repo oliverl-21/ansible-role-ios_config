@@ -1,24 +1,24 @@
-ios_config
+ansible-role-ios_config
 =========
 
-## Cisco IOS Config Role
+## Cisco IOS Config Ansible Role
 
-Current Tasks:
+### Current Tasks:
  - Radius Server Definition
  - ISE/802.1x Global Settings
  - Device Sensor Configuration
 
-Feature:
+### Feature:
  - connect via Bastion/Jumphost based on Inventory Variable
  - switched from Paramiko to libssh
   
-ToDo:
+### ToDo:
 - 802.1x Interface Config
 - DHCP Snooping Trusted Interface
 - maybe ISE config (ND, NDG)
   - Integrate with: [maxrainer.cisco_ise](https://galaxy.ansible.com/maxrainer/cisco_ise)
-- and more
-
+- and more common tasks
+ 
 Requirements
 ------------
 
@@ -36,8 +36,13 @@ Usage of libssh Module
 ```shell
 pip3 install ansible-libssh
 ```
+Switch to libssh for this Role
+```yml
+# roles/ios_config/default.yml
+ansible_network_cli_ssh_type: libssh
+```
 
-Add the following to ansible.cfg
+Add the following to ansible.cfg to activate it globally
 ```ini
 # ansible.cfg
 [persistent_connection]
@@ -66,14 +71,15 @@ bastion_host: ""
 
 add ```bastion_host: "your-host" ``` to your Inventory host/group vars where the Jumphost should be used. The Jumphost has to be defined in the Inventory
 
-Example:
+#### Example:
 ```yaml
 # inventory/group_vars/ios.yml
 ---
 ansible_user: admin
 ansible_network_os: ios
 bastion_host: tux01
-
+```
+```ini
 # inventory/<inventoryfile>
 [debian]
 tux01 ansible_host=tux01.example.org
