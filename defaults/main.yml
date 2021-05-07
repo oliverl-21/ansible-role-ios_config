@@ -5,6 +5,7 @@ push_config: false
 ios_int_config_enabled: false
 ios_sensor_config_enabled: false
 ios_1xglobal_config_enabled: false
+ansible_network_cli_ssh_type: libssh
 
 ios_config_fact_subsets:
   - "!config"
