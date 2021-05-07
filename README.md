@@ -32,9 +32,9 @@ Requirements
 ### Switch to LibSSH 
 [Reference](https://www.ansible.com/blog/new-libssh-connection-plugin-for-ansible-network)
 
-Usage of libssh Module
+Usage of libssh Module (currently only linux)
 ```shell
-pip3 install ansible-libssh
+pip3 install ansible-pylibssh
 ```
 Switch to libssh for this Role
 ```yml
@@ -69,7 +69,7 @@ ansible_ssh_common_args: >-
 bastion_host: ""
 ```
 
-add ```bastion_host: "your-host" ``` to your Inventory host/group vars where the Jumphost should be used. The Jumphost has to be defined in the Inventory
+add ``` bastion_host: "your-host" ``` to your Inventory host/group vars where the Jumphost should be used. The Jumphost has to be defined in the Inventory
 
 #### Example:
 ```yaml
