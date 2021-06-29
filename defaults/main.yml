@@ -5,6 +5,7 @@ push_config: false
 ios_int_config_enabled: false
 ios_sensor_config_enabled: false
 ios_1xglobal_config_enabled: false
+int_global_config_enabled: false
 ansible_network_cli_ssh_type: libssh
 
 ios_config_fact_subsets:
@@ -23,3 +24,9 @@ radius_servers:
 
 # Radius Source Interface
 mgmt_vlan: 30
+
+# Interface definition
+access_vlan: 10
+fallback_vlan: 20
+voice_vlan:
+low_impact: false

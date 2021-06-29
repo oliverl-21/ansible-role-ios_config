@@ -16,3 +16,7 @@
 - name: 1x Global Config
   import_tasks: 1x-global.yml
   when: ios_1xglobal_config_enabled
+
+- name: 1x Interface Config
+  import_tasks: 1x-int.yml
+  when: int_global_config_enabled

@@ -1,0 +1,24 @@
+switchport mode access
+switchport access vlan {{ access_vlan }}
+{% if low_impact %}
+authentication open
+{% endif %}
+authentication host-mode multi-auth
+authentication periodic
+authentication timer reauthenticate server
+authentication timer inactivity server dynamic
+authentication event fail action next-method
+authentication event server dead action authorize {{ fallback_vlan }}
+{% if voice_vlan %}
+switchport voice vlan {{ voice_vlan }}
+authentication event server dead action authorize voice
+{% endif %}
+authentication event server alive action reinitialize
+authentication order dot1x mab
+authentication priority dot1x mab
+authentication port-control auto
+authentication violation restrict
+mab
+dot1x pae authenticator
+dot1x timeout tx-period 7
+spanning-tree portfast
