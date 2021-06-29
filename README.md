@@ -28,6 +28,11 @@ Requirements
 - Radius-Key
 - Radius Source Interface 
  
+ ### Interface Definition
+ - access VLAN
+ - fallback VLAN (optional)
+ - voice vlan (optional)
+ - low impact mode (optional)
 
 ### Switch to LibSSH 
 [Reference](https://www.ansible.com/blog/new-libssh-connection-plugin-for-ansible-network)
@@ -101,6 +106,8 @@ Role Variables
   - enables IOS Device Sensor Configuration
 - ios_1xglobal_config_enabled
   - enables IOS ISE/802.1x Global Config
+- int_global_config_enabled
+  - enables 802.1x interface configuration
 
 Dependencies
 ------------
