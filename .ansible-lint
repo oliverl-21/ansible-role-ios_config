@@ -1,5 +1,3 @@
 skip_list:
-  - risky-file-permission
-  - 'yaml'
-  - 'risky-shell-pipe'
+  - 'risky-file-permissions'
   - 'role-name'
