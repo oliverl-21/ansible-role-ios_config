@@ -1,6 +1,4 @@
 ---
-roles:
-  - name: ios_config
 collections:
   - name: cisco.ios
   - name: ansible.netcommon
