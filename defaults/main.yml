@@ -12,6 +12,8 @@ ios_config_fact_subsets:
   - "!config"
 ios_config_fact_network_resources:
   - "l2_interfaces"
+  - "l3_interfaces"
+  - "acls"
 
 # Radius Server Definition
 radius_servers:
