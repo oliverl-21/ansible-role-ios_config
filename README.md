@@ -7,16 +7,18 @@ ansible-role-ios_config
  - Radius Server Definition
  - ISE/802.1x Global Settings
  - Device Sensor Configuration
+ - 802.1x Interface Config (paritally, logic for interface choice is missing)
 
 ### Feature:
  - connect via Bastion/Jumphost based on Inventory Variable
  - switched from Paramiko to libssh
   
 ### ToDo:
-- 802.1x Interface Config
 - DHCP Snooping Trusted Interface
 - maybe ISE config (ND, NDG)
-  - Integrate with: [maxrainer.cisco_ise](https://galaxy.ansible.com/maxrainer/cisco_ise)
+  - Integrate with: 
+    - [maxrainer.cisco_ise](https://galaxy.ansible.com/maxrainer/cisco_ise)
+    - [Cisco Ansible Collection](https://github.com/CiscoISE/ansible-ise)
 - and more common tasks
  
 Requirements
