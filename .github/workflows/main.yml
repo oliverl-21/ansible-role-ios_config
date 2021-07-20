@@ -1,6 +1,5 @@
 --
-name: GitHub Action
-
+name: Release
 on:
   - push
 
