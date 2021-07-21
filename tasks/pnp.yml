@@ -1,7 +1,7 @@
 ---
 # Generate IOS Device Sensor config
 - name: Generate PnP Config
-  template: src=pnp.j2 dest=roles/ios_config/files/{{ Serial }}.cfg
+  template: src=pnp.j2 dest=roles/ios_config/files/{{ ansible_net_serialnum }}.cfg
 
 - name: Push config
   ios_config:
