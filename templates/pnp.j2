@@ -1,7 +1,9 @@
 aaa new-model
-aaa authentication local
+aaa authentication login default local
 aaa authentication enable default none
-aaa authorization exec default local
-aaa authorization exec rotary local if-authenticated
+aaa authorization exec default local if-authenticated
 
 username {{ ansible_user }} priv 15 secret {{ ansible_password }}
+hostname {{ inventory_hostname }}
+no pnp profile pnp-zero-touch
+end
