@@ -4,6 +4,7 @@
   ios_facts:
     gather_subset: '{{ ios_config_fact_subsets }}'
     gather_network_resources: '{{ ios_config_fact_network_resources | default(omit) }}'
+  when: fact_gather_enabled
 
 - name: Interface Config
   import_tasks: interface.yml
@@ -20,3 +21,7 @@
 - name: 1x Interface Config
   import_tasks: 1x-int.yml
   when: int_global_config_enabled
+
+- name: pnp Config
+  import_tasks: pnp.yml
+  when: pnp_config_enabled

@@ -1,0 +1,7 @@
+aaa new-model
+aaa authentication local
+aaa authentication enable default none
+aaa authorization exec default local
+aaa authorization exec rotary local if-authenticated
+
+username {{ ansible_user }} priv 15 secret {{ ansible_password }}
