@@ -8,6 +8,7 @@ ansible-role-ios_config
  - ISE/802.1x Global Settings
  - Device Sensor Configuration
  - 802.1x Interface Config (paritally, logic for interface choice is missing)
+ - PnP ZTP workflow
 
 ### Feature:
  - connect via Bastion/Jumphost based on Inventory Variable
@@ -19,6 +20,7 @@ ansible-role-ios_config
   - Integrate with: 
     - [maxrainer.cisco_ise](https://galaxy.ansible.com/maxrainer/cisco_ise)
     - [Cisco Ansible Collection](https://github.com/CiscoISE/ansible-ise)
+- refine PnP ZTP Workflow
 - and more common tasks
  
 Requirements
@@ -99,7 +101,8 @@ ansible_become_method=sudo
 Role Variables
 --------------
 
-
+- fact_gather_enabled
+  - defaults to true
 - push_config
   - defines if config should be pushed to the Device or config diff should be stored locally 
 - ios_int_config_enabled
@@ -110,6 +113,8 @@ Role Variables
   - enables IOS ISE/802.1x Global Config
 - int_global_config_enabled
   - enables 802.1x interface configuration
+- pnp_config_enabled
+  - enables generation of PnP config should be used with fact_gather_enabled: false
 
 Dependencies
 ------------
