@@ -1,11 +1,11 @@
 ---
 # Generate IOS Interface config
 - name: Generate IOS interface config
-  template: src=1x-int.j2 dest=roles/ios_config/files/1xint_{{ inventory_hostname }}.cfg
+  template: src=1x-int.j2 dest=roles/ios_config/files/1xint_{{ inventory_hostname }}.ios
 
 - name: Push config
   ios_config:
-    src: roles/ios_config/files/1xint_{{ inventory_hostname }}.cfg
+    src: roles/ios_config/files/1xint_{{ inventory_hostname }}.ios
     match: none
   when: push_config
   notify:
