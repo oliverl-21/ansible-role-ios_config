@@ -25,3 +25,7 @@
 - name: pnp Config
   import_tasks: pnp.yml
   when: pnp_config_enabled
+
+- name: tacacs config
+  import_tasks: tacacs.yml
+  when: tacacs_config_enabled

@@ -1,0 +1,12 @@
+---
+# Generate IOS Tacacs+ Config
+- name: Generate IOS Tacacs+ Config
+  template: src=tacacs.j2 dest=roles/{{ role_name }}/files/tacacs_{{ inventory_hostname }}.ios
+
+- name: Push config
+  ios_config:
+    src: roles/{{ role_name }}/files/tacacs_{{ inventory_hostname }}.ios
+    match: none
+  when: push_config
+  notify:
+    - SaveConfig

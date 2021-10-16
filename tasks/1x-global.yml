@@ -1,6 +1,6 @@
 ---
-# Generate IOS Device Sensor config
-- name: Generate Device Sensor config
+# Generate IOS 802.1x Global Config
+- name: Generate IOS 802.1x Global Config
   template: src=1x-global.j2 dest=roles/{{ role_name }}/files/1xglobal_{{ inventory_hostname }}.ios
 
 - name: Push config
