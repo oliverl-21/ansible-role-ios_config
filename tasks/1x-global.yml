@@ -1,7 +1,13 @@
 ---
+<<<<<<< HEAD
 # Generate IOS Device Sensor config
 - name: Generate Device Sensor config
   template: src=1x-global.j2 dest=roles/{{ role_name }}/files/1xglobal_{{ inventory_hostname }}.ios
+=======
+# Generate Global IOS dot1x Config
+- name: Generate Global dot1x Config
+  template: src=1x-global.j2 dest=roles/{{ role_name }}/files/1xglobal_{{ inventory_hostname }}.cfg
+>>>>>>> 1906d77dbad04104092f01ecf66d49663a4a314a
 
 - name: Push config
   ios_config:

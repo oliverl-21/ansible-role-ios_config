@@ -1,0 +1,12 @@
+---
+# Generate IOS PnP Config
+- name: Generate PnP Config
+  template: src=pnp.j2 dest=roles/ios_config/files/{{ ansible_net_serialnum }}.cfg
+
+- name: Push config
+  ios_config:
+    src: roles/ios_config/files/sensor_{{ inventory_hostname }}.cfg
+    match: none
+  when: push_config
+  notify:
+    - SaveConfig

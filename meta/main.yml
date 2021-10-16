@@ -1,6 +1,6 @@
 galaxy_info:
   author: oliverl-21
-  description: Cisco IOS role
+  description: Cisco IOS Configuration role
   company: none
   role_name: ios_config
   issue_tracker_url: https://github.com/oliverl-21/ansible-role-ios_config/issues

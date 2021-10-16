@@ -6,7 +6,9 @@ ios_int_config_enabled: false
 ios_sensor_config_enabled: false
 ios_1xglobal_config_enabled: false
 int_global_config_enabled: false
-ansible_network_cli_ssh_type: libssh
+pnp_config_enabled: false
+fact_gather_enabled: true
+ansible_network_cli_ssh_type: paramiko
 
 ios_config_fact_subsets:
   - "!config"

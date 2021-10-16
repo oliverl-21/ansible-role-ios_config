@@ -1,0 +1,37 @@
+aaa new-model
+aaa authentication login default local
+aaa authentication enable default none
+aaa authorization exec default local if-authenticated
+
+username {{ ansible_user }} priv 15 secret {{ ansible_password }}
+hostname {{ inventory_hostname }}
+!
+vrf definition mgmt-vrf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+cdp run
+!
+interface GigabitEthernet1
+shutdown
+!
+interface GigabitEthernet3
+vrf forwarding mgmt-vrf
+ip address {{ ansible_host }} 255.255.255.0
+!
+ip route vrf mgmt-vrf 0.0.0.0 0.0.0.0 198.18.169.254
+!
+no ip http secure-server
+no ip http server
+line con 0
+logging synchronous
+line vty 0 4
+logging synchronous
+!
+!
+no pnp profile pnp-zero-touch
+end
