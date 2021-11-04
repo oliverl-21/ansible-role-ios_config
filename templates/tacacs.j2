@@ -6,6 +6,7 @@ address ipv4 {{ server['server'] }}
 key {{ server['key'] }}
 {% endfor %}
 
+{% if tacacs_group %}
 aaa group server tacacs+ {{ tacacs_group }}
 {% for server in tacacs_servers %}
 server name {{ server['name'] }}
@@ -19,11 +20,12 @@ aaa authorization config-commands
 aaa authorization commands 0 default group {{ tacacs_group }} local if-authenticated
 aaa authorization commands 1 default group {{ tacacs_group }} local if-authenticated
 aaa authorization commands 15 default group {{ tacacs_group }} local if-authenticated
-
 aaa accounting exec default start-stop group {{ tacacs_group }}
 aaa accounting commands 1 default start-stop group {{ tacacs_group }}
 aaa accounting commands 15 default start-stop group {{ tacacs_group }}
+{% else %}
 
+{% endif %}
 line con 0
 login authentication console
 line vty 0 4
