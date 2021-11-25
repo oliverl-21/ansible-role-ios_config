@@ -12,7 +12,7 @@ fact_gather_enabled: true
 ansible_network_cli_ssh_type: paramiko
 
 ios_config_fact_subsets:
-  - "!config"
+  - "all"
 ios_config_fact_network_resources:
   - "l2_interfaces"
   - "l3_interfaces"
