@@ -4,17 +4,20 @@ ansible-role-ios_config
 ## Cisco IOS Config Ansible Role
 
 ### Current Tasks:
- - Radius Server Definition
- - ISE/802.1x Global Settings
- - Device Sensor Configuration
- - 802.1x Interface Config (paritally, logic for interface choice is missing)
- - PnP ZTP workflow
+
+- Radius Server Definition
+- ISE/802.1x Global Settings
+- Device Sensor Configuration
+- 802.1x Interface Config (paritally, logic for interface choice is missing)
+- PnP ZTP workflow
 
 ### Feature:
- - connect via Bastion/Jumphost based on Inventory Variable
- - switched from Paramiko to libssh
+
+- connect via Bastion/Jumphost based on Inventory Variable
+- switched from Paramiko to libssh
   
 ### ToDo:
+
 - DHCP Snooping Trusted Interface
 - maybe ISE config (ND, NDG)
   - Integrate with: 
@@ -22,36 +25,43 @@ ansible-role-ios_config
     - [Cisco Ansible Collection](https://github.com/CiscoISE/ansible-ise)
 - refine PnP ZTP Workflow
 - and more common tasks
- 
+
 Requirements
 ------------
 
 ### Radius Server Definition:
+
 - IP Address
 - Hostname
 - Radius-Key
 - Radius Source Interface 
- 
- ### Interface Definition
- - access VLAN
- - fallback VLAN (optional)
- - voice vlan (optional)
- - low impact mode (optional)
 
-### Switch to LibSSH 
+ ### Interface Definition
+
+- access VLAN
+- fallback VLAN (optional)
+- voice vlan (optional)
+- low impact mode (optional)
+
+### Switch to LibSSH
+
 [Reference](https://www.ansible.com/blog/new-libssh-connection-plugin-for-ansible-network)
 
 Usage of libssh Module (currently only linux)
+
 ```shell
 pip3 install ansible-pylibssh
 ```
+
 Switch to libssh for this Role
+
 ```yml
 # roles/ios_config/default.yml
 ansible_network_cli_ssh_type: libssh
 ```
 
 Add the following to ansible.cfg to activate it globally
+
 ```ini
 # ansible.cfg
 [persistent_connection]
@@ -59,7 +69,9 @@ ssh_type = libssh
 ```
 
 ### Bastion/Jumphost Connection
+
 To use a Bastion/Jumphost to connect to the Network Devices create:
+
 ```yaml
 # inventory/group_vars/all/ansible_ssh.yml
 ansible_ssh_proxy_command: >-
@@ -80,7 +92,8 @@ bastion_host: ""
 
 add ``` bastion_host: "your-host" ``` to your Inventory host/group vars where the Jumphost should be used. The Jumphost has to be defined in the Inventory
 
-#### Example:
+### Example
+
 ```yaml
 # inventory/group_vars/ios.yml
 ---
@@ -88,6 +101,7 @@ ansible_user: admin
 ansible_network_os: ios
 bastion_host: tux01
 ```
+
 ```ini
 # inventory/<inventoryfile>
 [debian]
@@ -122,13 +136,15 @@ Dependencies
 Roles: none
 
 Collection:
+
 - cisco.ios
 - ansible.netcommon
 
 Example Playbook
 ----------------
 
-TODO
+ToDo
+
 ```yaml
 - name: example
   hosts: csw02

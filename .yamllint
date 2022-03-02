@@ -6,6 +6,6 @@ rules:
     level: warning
   comments-indentation: disable
   hyphens:
-    max-spaces-after: 2
+    max-spaces-after: 3
   new-lines:
     type: unix
