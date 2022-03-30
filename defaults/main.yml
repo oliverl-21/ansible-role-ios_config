@@ -48,3 +48,6 @@ access_vlan: 10
 fallback_vlan: 20
 voice_vlan:
 low_impact: false
+
+rad_health_user: radius-health
+rad_health_pass: looklookup('community.general.random_string', length=16)

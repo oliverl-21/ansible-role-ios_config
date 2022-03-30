@@ -13,6 +13,8 @@ aaa session-id common
 aaa accounting update newinfo periodic 2880
 aaa accounting system default start-stop group radius
 !
+username {{ rad_health_user }} privilege 0 secret 0 {{ rad_health_pass }}
+!
 aaa server radius dynamic-author
 {% for server in radius_servers %}
 client {{ server['server'] }} server-key {{ server['key'] }}
@@ -45,6 +47,7 @@ no dot1x logging verbose
 {% for server in radius_servers %}
 radius server {{ server['name'] }}
 address ipv4 {{ server['server'] }} auth-port 1812 acct-port 1813
+automate-tester username {{ rad_health_user }} probe-on
 key {{ server['key'] }}
 retransmit 2
 timeout 3
