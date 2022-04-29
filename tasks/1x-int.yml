@@ -1,11 +1,13 @@
 ---
 # Generate IOS Interface config
 - name: Generate IOS interface config
-  template: src=1x-int.j2 dest=roles/ios_config/files/1xint_{{ inventory_hostname }}.ios
+  ansible.builtin.template:
+    src: 1x-int.j2
+    dest: "{{ role_path }}/files/1xint_{{ inventory_hostname }}.ios"
 
-- name: Push config
-  ios_config:
-    src: roles/ios_config/files/1xint_{{ inventory_hostname }}.ios
+- name: Push Interface config
+  cisco.ios.ios_config:
+    src: "{{ role_path }}/files/1xint_{{ inventory_hostname }}.ios"
     match: none
   when: push_config
   notify:

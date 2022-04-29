@@ -1,11 +1,13 @@
 ---
 # Generate IOS Tacacs+ Config
 - name: Generate IOS Tacacs+ Config
-  template: src=tacacs.j2 dest=roles/{{ role_name }}/files/tacacs_{{ inventory_hostname }}.ios
+  ansible.builtin.template:
+    src: tacacs.j2
+    dest: "{{ role_path }}/files/tacacs_{{ inventory_hostname }}.ios"
 
-- name: Push config
-  ios_config:
-    src: roles/{{ role_name }}/files/tacacs_{{ inventory_hostname }}.ios
+- name: Push Tacacs config
+  cisco.ios.ios_config:
+    src: "{{ role_path }}/files/tacacs_{{ inventory_hostname }}.ios"
     match: none
   when: push_config
   notify:

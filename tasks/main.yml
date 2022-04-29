@@ -1,7 +1,7 @@
 ---
 # tasks file for ios-config
 - name: Gather IOS facts
-  ios_facts:
+  cisco.ios.ios_facts:
     gather_subset: '{{ ios_config_fact_subsets }}'
     gather_network_resources: '{{ ios_config_fact_network_resources | default(omit) }}'
   when: fact_gather_enabled

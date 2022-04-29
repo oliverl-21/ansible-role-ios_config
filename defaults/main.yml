@@ -20,10 +20,10 @@ ios_config_fact_network_resources:
 
 # Radius Server Definition
 radius_servers:
-  -  server: 10.18.48.10
+  -  server: 10.1.1.1
      key: test123
      name: ISE01
-  -  server: 10.18.48.11
+  -  server: 10.1.1.2
      key: test123
      name: ISE02
 
@@ -31,10 +31,10 @@ radius_group: ise-group
 
 # Tacacs Server Definition
 tacacs_servers:
-  -  server: 10.18.48.10
+  -  server: 10.1.1.1
      key: test123
      name: ISE01
-  -  server: 10.18.48.11
+  -  server: 10.1.1.2
      key: test123
      name: ISE02
 
