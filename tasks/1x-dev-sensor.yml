@@ -1,11 +1,13 @@
 ---
 # Generate IOS Device Sensor config
 - name: Generate Device Sensor config
-  template: src=1x-dev-sensor.j2 dest=roles/ios_config/files/sensor_{{ inventory_hostname }}.ios
+  ansible.builtin.template:
+    src: 1x-dev-sensor.j2
+    dest: "{{ role_path }}/files/sensor_{{ inventory_hostname }}.ios"
 
 - name: Push config
-  ios_config:
-    src: roles/ios_config/files/sensor_{{ inventory_hostname }}.ios
+  cisco.ios.ios_config:
+    src: "{{ role_path }}/files/sensor_{{ inventory_hostname }}.ios"
     match: none
   when: push_config
   notify:
