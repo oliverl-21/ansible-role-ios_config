@@ -1,10 +1,10 @@
 # for future use
 - name: Update IOS-XE
-  debug:
+  ansible.builtin.debug:
     msg: "{{ ansible_net_version }}"
   when: ansible_net_iostype == "IOS-XE"
 
 - name: Update IOS
-  debug:
+  ansible.builtin.debug:
     msg: "{{ ansible_net_version }}"
   when: ansible_net_iostype == "IOS"
